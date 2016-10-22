@@ -83,7 +83,7 @@ public class EnemyPlaneController extends SingleController implements Contactabl
             shootBehavior = new DownShootBehavior();
         } else if(enemyPlaneType == EnemyPlaneType.RED) {
             image = Utils.loadImageFromRes("enemy_plane_yellow_1.png");
-            flyBehavior =  new DownRightFlyBehavior();
+            flyBehavior =  new RightLeftFlyBehavior(1);
             shootBehavior = new TrackShootBehavior();
         }
         return new EnemyPlaneController(

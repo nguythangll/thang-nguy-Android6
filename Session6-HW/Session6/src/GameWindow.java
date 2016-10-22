@@ -1,4 +1,5 @@
 import controllers.*;
+import models.DoubleBullet;
 import models.GameConfig;
 import models.Plane;
 import utils.Utils;
@@ -36,6 +37,10 @@ public class GameWindow extends Frame implements Runnable {
         controllerManager.add(planeController);
         controllerManager.add(planeController2);
         controllerManager.add(new EnemyPlaneControllerManager());
+        controllerManager.add(new DoubleBulletController(
+                new DoubleBullet(300, 0),
+                new GameView(Utils.loadImageFromRes("bullet-double.png"))
+        ));
         controllerManager.add(CollisionPool.instance);
 
         backBufferImage = new BufferedImage(backgroundWidth,

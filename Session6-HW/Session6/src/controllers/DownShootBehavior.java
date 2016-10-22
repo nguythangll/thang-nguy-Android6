@@ -14,7 +14,7 @@ public class DownShootBehavior implements ShootBehavior {
         EnemyBulletController enemyBulletController =
                 EnemyBulletController.create(
                         gameObject.getX(), gameObject.getY(),
-                        new DownFlyBehavior(0,3));
+                        new DownFlyBehavior(0,2));
 
         bulletControllerManager.add(enemyBulletController);
     }

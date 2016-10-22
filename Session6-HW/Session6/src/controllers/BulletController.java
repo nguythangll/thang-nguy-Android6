@@ -1,6 +1,8 @@
 package controllers;
 
+import models.Bullet;
 import models.GameObject;
+import utils.Utils;
 import views.GameView;
 
 /**
@@ -26,4 +28,19 @@ public class BulletController extends SingleController implements Contactable {
             ((EnemyPlaneController) contactable).destroy();
         }
     }
+//    public static BulletController create(int x, int y, String image, FlyBehavior flyBehavior) {
+//
+//        BulletController bulletController =
+//                new BulletController(
+//                        new Bullet(x, y),
+//                        new GameView(Utils.loadImageFromRes(image)),
+//                        flyBehavior
+//                );
+//
+//        return bulletController;
+//    }
+//
+//    public static BulletController create(int x, int y, FlyBehavior flyBehavior) {
+//        return create(x, y, "bullet.png", flyBehavior);
+//    }
 }

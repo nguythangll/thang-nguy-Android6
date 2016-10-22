@@ -19,13 +19,14 @@ public class PlaneController extends SingleController implements Contactable {
     private int dx;
     private int dy;
     public static final int SPEED = 10;
-    private int numberBullet = 0;
+    protected boolean doubleBullet;
     private ControllerManager bulletControllers;
 
     private PlaneController(Plane gameObject, GameView gameView) {
         super(gameObject, gameView);
         bulletControllers = new ControllerManager();
         CollisionPool.instance.register(this);
+        this.doubleBullet = false;
     }
 
     public void getHit(int damage) {
@@ -87,19 +88,22 @@ public class PlaneController extends SingleController implements Contactable {
     }
 
     private void createBullet() {
-        if (numberBullet == 0) {
-            BulletController bulletController = new BulletController(
-                    new Bullet(gameObject.getMiddleX(), gameObject.getY()),
+
+        BulletController bulletController;
+        if (!doubleBullet) {
+            bulletController = new BulletController(
+                    new Bullet(gameObject.getMiddleX() - Bullet.BULLET_WIDTH/2, gameObject.getY()),
                     new GameView(Utils.loadImageFromRes("bullet.png"))
             );
-            bulletControllers.add(bulletController);
-        } else if(numberBullet == 1){
-            BulletController doubleBulletController = new BulletController(
-                    new Bullet(gameObject.getMiddleX(), gameObject.getY()),
+        }
+        else {
+            bulletController = new BulletController(
+                    new Bullet(gameObject.getMiddleX()-  Bullet.BULLET_WIDTH/2, gameObject.getY()),
                     new GameView(Utils.loadImageFromRes("bullet-double.png"))
             );
-            bulletControllers.add(doubleBulletController);
         }
+        bulletControllers.add(bulletController);
+
     }
 
     @Override
