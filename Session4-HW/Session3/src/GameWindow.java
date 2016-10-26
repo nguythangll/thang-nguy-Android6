@@ -59,7 +59,7 @@ public class GameWindow extends Frame implements Runnable {
 
         this.setVisible(true);
         this.setSize(BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
-
+        this.setLocationRelativeTo(null);
         this.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
